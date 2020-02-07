@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>郭小胖的100days</title>
+	<style type="text/css">
+            h{
+                width: 30px;
+                height: 60px;
+                color: red;
+                line-height: 40px;
+				font-size:20px;
+				margin-left:45%;
+            }
+            b{
+                width: 200px;
+                height: 40px;
+	</style>
+</head>
+<body>
+<header><h>郭小胖的100days</h></header>
+<table width="1200" height="1600" bgcolor="white" 
+cellspacing="1" align="center">
+    <tr>
+        <td><b>第一行第一列</b></td>
+        <td><img src="/static/images/1day.jpg" width="300" height="auto" alt="1day"></td>    
+    </tr>
+    <tr>
+        <td>第二行第一列</td>
+        <td><img src="/static/images/1month.jpg" width="300" height="auto" alt="1month"></td>    
+    </tr>
+	<tr>
+        <td>第一行第一列</td>
+        <td><img src="/static/images/2month.jpg" width="300" height="auto" alt="2month"></td>    
+    </tr>
+    <tr>
+        <td>第二行第一列</td>
+        <td><img src="/static/images/100day.jpg" width="300" height="auto" alt="100day"></td>    
+    </tr>
+</table>
+<video width="400" height="auto" controls>
+  <source src="/static/01.mp4" align="center" type="video/mp4">
+您的浏览器不支持Video标签。
+</video>
+<h1>Comment List</h1>
+<table>
+    <tr>
+        <td>评论</td>
+        <td>时间</td>
+    </tr>
+{% for comments in comments_list.all %}
+    <tr>
+        <td>{{ comments.content }}</td>
+        <td>{{ comments.pub_date }}</td>
+		<td><a href="{% url 'delComments' comments.id %}">删除</a></td>
+
+    </tr>
+{% endfor %}
+</table>
+<form action="{% url 'addComments' %}" method="post" name="addComments">
+    {% csrf_token %}
+    <p><span>评论：</span><input type="text"  name="content"></p>
+    <input type="submit" value="添加">
+</form>
+</body>
+</html>
