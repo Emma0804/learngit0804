@@ -5,7 +5,12 @@ from .models import Comments
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
-
+import logging
+import logging.config
+from .mylog import  *
+#CONF_LOG = "D:/Study/Code/test1/fMfD/static/config/config.ini"
+#logging.config.fileConfig(CONF_LOG);  # 采用配置文件
+#logger_error = logging.getLogger('errorlogger')
 def index(request):
     return HttpResponse("Hello, world!")
 
@@ -16,6 +21,7 @@ def detail(request):
 
 def addComments(request):
     if request.method == 'POST':
+        logger_error.error("addcomments")
         temp_content = request.POST['content']
     temp_comments = Comments(content=temp_content, pub_date=timezone.now())
     temp_comments.save()
