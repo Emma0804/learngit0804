@@ -10,23 +10,24 @@
 <table width="1200" height="1600" bgcolor="white" 
 cellspacing="1" align="center">
     <tr>
-        <td><b>第一行第一列</b></td>
-        <td><img src="/static/images/1day.jpg" width="300" height="auto" alt="1day"></td>    
+        <td><b><a href=#mv> mvlink</a></b></td>
+        <td><img src="/static/images/1day.jpg" width="300" height="auto" alt="1day" title='1day'></td>    
     </tr>
     <tr>
         <td>第二行第一列</td>
-        <td><img src="/static/images/1month.jpg" width="300" height="auto" alt="1month"></td>    
+        <td><img src="/static/images/1month.jpg" width="300" height="auto" alt="1month" title='1month'></td>    
     </tr>
 	<tr>
         <td>第一行第一列</td>
-        <td><img src="/static/images/2month.jpg" width="300" height="auto" alt="2month"></td>    
+        <td><img src="/static/images/2month.jpg" width="300" height="auto" alt="2month" title='2month'></td>    
     </tr>
     <tr>
         <td>第二行第一列</td>
-        <td><img src="/static/images/100day.jpg" width="300" height="auto" alt="100day"></td>    
+        <td><img src="/static/images/100day.jpg" width="300" height="auto" alt="100day" title='100day'></td>    
     </tr>
 </table>
-<video width="400" height="auto" controls>
+<h1><a name='mv'>mv</a></h1>
+<video width="400" height="auto" controls='controls' loop='loop'>
   <source src="/static/01.mp4" align="center" type="video/mp4">
 您的浏览器不支持Video标签。
 </video>
@@ -47,8 +48,12 @@ cellspacing="1" align="center">
 </table>
 <form action="{% url 'addComments' %}" method="post" name="addComments">
     {% csrf_token %}
-    <p><span>评论：</span><input type="text"  name="content"></p>
+    <p><span>评论：</span><input type="text"  name="content" required minlength='1' maxlength='10'></p>
     <input type="submit" value="添加">
 </form>
+<footer>
+      <p>©Copyright 2020 by ZX.</p>
+    </footer>
+
 </body>
 </html>
